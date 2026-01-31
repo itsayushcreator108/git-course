@@ -1,0 +1,315 @@
+GIT AND GITHUB COMPLETE DOCUMENTATION
+
+
+--------------------------------------------------
+1. STEPS TO CREATE A REPOSITORY ON GITHUB
+--------------------------------------------------
+
+Step 1: Create Repository on GitHub Website
+- Go to github.com and login
+- Click on New Repository
+- Enter repository name
+- Select Public or Private
+- Click on Create Repository
+
+Step 2: Create a Local Project Folder
+mkdir myproject
+cd myproject
+
+Step 3: Initialize Git
+git init
+This creates a .git folder and starts version control.
+
+Step 4: Add Files to Staging Area
+git add .
+or
+git add filename
+
+Step 5: Commit Files
+git commit -m "Initial commit"
+This saves changes to the local repository.
+
+Step 6: Add Remote Repository
+
+Using HTTPS:
+git remote add origin https://github.com/username/repository-name.git
+
+Using SSH:
+git remote add origin git@github.com:username/repository-name.git
+
+Check remote:
+git remote -v
+
+Step 7: Push Code to GitHub
+git branch -M main
+git push -u origin main
+
+
+--------------------------------------------------
+2. IMPORTANT GIT COMMANDS
+--------------------------------------------------
+
+git status        : Shows file status
+git log           : Shows commit history
+git diff          : Shows file changes
+git clone URL     : Copies repository
+git pull          : Fetches and merges changes
+git push          : Uploads changes
+git branch        : Shows branches
+git checkout -b b : Creates and switches branch
+git merge branch  : Merges branch
+
+
+--------------------------------------------------
+3. DIFFERENCE BETWEEN HTTPS AND SSH
+--------------------------------------------------
+
+HTTPS:
+- Uses username and token for authentication
+- Easy to set up
+- Requires authentication every push
+- Suitable for beginners
+
+SSH:
+- Uses SSH key for authentication
+- More secure
+- One-time setup
+- No password needed after setup
+- Preferred by professionals
+
+
+--------------------------------------------------
+4. HTTPS WORKING PROCESS
+--------------------------------------------------
+
+- User runs git push
+- GitHub asks for username
+- GitHub asks for personal access token
+- Token is verified
+- Code is pushed to GitHub
+
+
+--------------------------------------------------
+5. SSH WORKING PROCESS
+--------------------------------------------------
+
+Step 1: Generate SSH Key
+ssh-keygen -t ed25519 -C "email@example.com"
+
+Step 2: Start SSH Agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+Step 3: Add SSH Key to GitHub
+cat ~/.ssh/id_ed25519.pub
+Copy the key and paste it into GitHub SSH settings.
+
+Step 4: Test Connection
+ssh -T git@github.com
+
+Step 5: Use SSH URL for clone or push
+git clone git@github.com:username/repository-name.git
+
+
+--------------------------------------------------
+6. GIT TAGGING
+--------------------------------------------------
+
+Tagging is used to mark specific commits, usually for releases like v1.0 or v2.0.
+Tags are fixed and do not change like branches.
+
+
+--------------------------------------------------
+7. TYPES OF TAGS IN GIT
+--------------------------------------------------
+
+1. Lightweight Tag
+- Simple pointer to a commit
+- No message
+- No metadata
+- Used for temporary references
+
+Command:
+git tag v1.0
+
+Tag a specific commit:
+git tag v1.0 commit-id
+
+
+2. Annotated Tag
+- Stores metadata like author, date, and message
+- Stored as a Git object
+- Recommended for releases
+
+Command:
+git tag -a v1.0 -m "First stable release"
+
+Tag a specific commit:
+git tag -a v1.0 commit-id -m "Release version"
+
+
+--------------------------------------------------
+8. VIEW AND PUSH TAGS
+--------------------------------------------------
+
+View tags:
+git tag
+
+View tag details:
+git show v1.0
+
+Push a single tag:
+git push origin v1.0
+
+Push all tags:
+git push origin --tags
+
+
+--------------------------------------------------
+9. DELETE TAGS
+--------------------------------------------------
+
+Delete local tag:
+git tag -d v1.0
+
+Delete remote tag:
+git push origin --delete v1.0
+
+
+--------------------------------------------------
+10. GIT BRANCHING
+--------------------------------------------------
+
+A branch in Git is a separate line of development.
+It allows developers to work without affecting the main code.
+The default branch is called main.
+
+
+--------------------------------------------------
+11. WHY BRANCHING IS USED
+--------------------------------------------------
+
+- Parallel development
+- Safe experimentation
+- Feature development
+- Bug fixing
+- Team collaboration
+
+
+--------------------------------------------------
+12. HOW GIT BRANCHING WORKS
+--------------------------------------------------
+
+- A branch is a pointer to a commit
+- Creating a branch does not copy files
+- Each commit moves the branch pointer forward
+
+
+--------------------------------------------------
+13. TYPES OF BRANCHES
+--------------------------------------------------
+
+Main Branch      : Stable production code
+Feature Branch   : New features
+Bugfix Branch    : Bug fixes
+Release Branch   : Release preparation
+Hotfix Branch    : Urgent fixes
+
+
+--------------------------------------------------
+14. BASIC BRANCH COMMANDS
+--------------------------------------------------
+
+Check branches:
+git branch
+
+Create branch:
+git branch feature1
+
+Switch branch:
+git checkout feature1
+or
+git switch feature1
+
+Create and switch:
+git checkout -b feature1
+
+
+--------------------------------------------------
+15. WORKING ON A BRANCH
+--------------------------------------------------
+
+Make changes:
+git add .
+git commit -m "Added feature"
+
+
+--------------------------------------------------
+16. MERGING BRANCHES
+--------------------------------------------------
+
+Switch to main:
+git checkout main
+
+Merge branch:
+git merge feature1
+
+
+--------------------------------------------------
+17. TYPES OF MERGE
+--------------------------------------------------
+
+Fast-Forward Merge:
+Occurs when main has no new commits.
+
+Three-Way Merge:
+Occurs when both branches have commits and creates a merge commit.
+
+
+--------------------------------------------------
+18. MERGE CONFLICTS
+--------------------------------------------------
+
+Occurs when same line is changed in both branches.
+
+Steps to resolve:
+- Open conflicted file
+- Fix code manually
+- Remove conflict markers
+- Add and commit changes
+
+Commands:
+git add .
+git commit -m "Resolved merge conflict"
+
+
+--------------------------------------------------
+19. DELETE BRANCH
+--------------------------------------------------
+
+Delete branch locally:
+git branch -d feature1
+
+
+--------------------------------------------------
+20. PUSH BRANCH TO GITHUB
+--------------------------------------------------
+
+Push branch:
+git push origin feature1
+
+Set upstream:
+git push -u origin feature1
+
+
+--------------------------------------------------
+21. EXAM ONE-LINERS
+--------------------------------------------------
+
+- Git is a distributed version control system.
+- GitHub is a cloud platform for Git repositories.
+- A branch is a movable pointer to a commit.
+- Tags are used for versioning.
+- Annotated tags are preferred for releases.
+- SSH uses key-based authentication.
+- HTTPS uses token-based authentication.
